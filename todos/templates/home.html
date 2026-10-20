@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Packt Todo Application</title>
+    <!-- Подключение стилей Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container-fluid">
+                <h1 class="text-white mx-auto">Packt Todo Application</h1>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Основной контейнер для контента -->
+    <div class="container mt-4">
+        {% block todo_container %}{% endblock %}
+    </div>
+</body>
+
+</html>

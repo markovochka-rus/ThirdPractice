@@ -1,0 +1,55 @@
+{% extends "home.html" %}
+
+{% block todo_container %}
+<main class="container">
+    <hr>
+
+    <!-- Форма добавления задачи -->
+    <section class="container-fluid">
+        <form method="post" action="/todo">
+            <div class="col-auto">
+                <div class="input-group mb-3">
+                    <input type="text" name="item" class="form-control"
+                        placeholder="Purchase Packt's Python workshop course" required />
+                    <button class="btn btn-outline-primary" type="submit">
+                        Add Todo
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <!-- Блок отображения задач -->
+    {% if todo %}
+    <!-- Если запрошена одна задача (по ID) -->
+    <article class="card container-fluid">
+        <br />
+        <h4>Todo ID: {{ todo.id }} </h4>
+        <p>
+            <strong>Item: {{ todo.item }}</strong>
+        </p>
+    </article>
+    {% else %}
+    <!-- Если отображается список всех задач -->
+    <section class="container-fluid">
+        <h2 align="center" class="mt-4">Todos</h2>
+        <br>
+        <div class="card">
+            <ul class="list-group list-group-flush">
+                {% for todo in todos %}
+                <li class="list-group-item">
+                    <!-- Выводим ID и делаем текст ссылкой на конкретную задачу -->
+                    {{ todo.id }}. <a href="/todo/{{ todo.id }}">{{ todo.item }}</a>
+                </li>
+                {% endfor %}
+
+                <!-- Если задач пока нет -->
+                {% if not todos %}
+                <li class="list-group-item text-muted">No todos yet. Add one above!</li>
+                {% endif %}
+            </ul>
+        </div>
+    </section>
+    {% endif %}
+</main>
+{% endblock %}
